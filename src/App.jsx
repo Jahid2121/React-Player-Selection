@@ -8,6 +8,7 @@ function App() {
 
   const [allplayers, setAllplayers ] = useState([])
   const [selectedPlayers, setSelectedPlayers] = useState([])
+  const [totalremaining, setTotalRemaining] =  useState(2000000)
 
   useEffect(()=> {
     fetch('players.json')
@@ -16,15 +17,27 @@ function App() {
   }, [])
 
     const handlePlayerSalary = playerData => {
-      
       const isExist = selectedPlayers.find(item => item.id === playerData.id)
+      let count = playerData.salary
       if (isExist) {
         return alert(`You have already added ${playerData.name}`)
       }      
       else{
+        
+      selectedPlayers.forEach(player => {
+          count = count + player.salary
+          
+        } )
+        const remaining = 2000000 - count
+        if(remaining < 0) {
+          return alert("Out of budget")
+        }
+        else {
+          setTotalRemaining(remaining)
+        }
+        
         const newPlayerData = [...selectedPlayers, playerData]
         setSelectedPlayers(newPlayerData)
-        console.log(selectedPlayers);
       }
        
     }
@@ -43,11 +56,11 @@ function App() {
      </div>
     <div className=' w-1/3'>
     
-    <Cart  selectedPlayers={selectedPlayers}/>
+    <Cart totalremaining={totalremaining}  selectedPlayers={selectedPlayers}/>
     
     </div>
      </div>
-    </div>
+    </div>  
     </>
   )
 }

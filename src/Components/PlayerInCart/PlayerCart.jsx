@@ -5,7 +5,6 @@ const PlayerCart = ({selectedPlayer}) => {
     const {name,salary} = selectedPlayer
     return (
         <div className=''>
-           
             <li className='ml-3'>{name}</li>
         </div>
     );
