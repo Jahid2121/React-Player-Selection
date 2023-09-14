@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PlayerCart = ({selectedPlayer}) => {
-    const {name} = selectedPlayer
+    const {name,salary} = selectedPlayer
     return (
         <div className=''>
+           
             <li className='ml-3'>{name}</li>
         </div>
     );

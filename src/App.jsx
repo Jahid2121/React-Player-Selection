@@ -15,10 +15,20 @@ function App() {
     .then(data => setAllplayers(data))
   }, [])
 
-    const handlePlayerSalary = data => {
-    const newPlayerData = [...selectedPlayers, data]
-      setSelectedPlayers(newPlayerData)
+    const handlePlayerSalary = playerData => {
+      
+      const isExist = selectedPlayers.find(item => item.id === playerData.id)
+      if (isExist) {
+        return alert(`You have already added ${playerData.name}`)
+      }      
+      else{
+        const newPlayerData = [...selectedPlayers, playerData]
+        setSelectedPlayers(newPlayerData)
+        console.log(selectedPlayers);
+      }
+       
     }
+    
 
   return (
     <>
