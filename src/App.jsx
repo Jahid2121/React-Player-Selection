@@ -9,6 +9,8 @@ function App() {
   const [allplayers, setAllplayers ] = useState([])
   const [selectedPlayers, setSelectedPlayers] = useState([])
   const [totalremaining, setTotalRemaining] =  useState(2000000)
+  const [totalCost, setTotalCost] = useState(0)
+  const [showBtn, setShowBtn] = useState(true)
 
   useEffect(()=> {
     fetch('players.json')
@@ -17,6 +19,8 @@ function App() {
   }, [])
 
     const handlePlayerSalary = playerData => {
+      const showBtn = playerdata 
+      setShowBtn(!showBtn)
       const isExist = selectedPlayers.find(item => item.id === playerData.id)
       let count = playerData.salary
       if (isExist) {
@@ -29,11 +33,13 @@ function App() {
           
         } )
         const remaining = 2000000 - count
+        
         if(remaining < 0) {
           return alert("Out of budget")
         }
         else {
           setTotalRemaining(remaining)
+          setTotalCost(count)
         }
         
         const newPlayerData = [...selectedPlayers, playerData]
@@ -50,13 +56,13 @@ function App() {
      <div className='flex'>
      <div  className='w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
       {
-        allplayers.map(player => <Card key={player.id} handlePlayerSalary={handlePlayerSalary}  player={player} />)
+        allplayers.map(player => <Card key={player.id} showBtn={showBtn}handlePlayerSalary={handlePlayerSalary}  player={player} />)
       }
      
      </div>
     <div className=' w-1/3'>
     
-    <Cart totalremaining={totalremaining}  selectedPlayers={selectedPlayers}/>
+    <Cart totalremaining={totalremaining} totalCost={totalCost}  selectedPlayers={selectedPlayers}/>
     
     </div>
      </div>

@@ -6,7 +6,9 @@ const Button = ({handlePlayerSalary, player}) => {
     return (
         <>
             <div className="card-actions">
-      <button onClick={() => handlePlayerSalary(player)} className="btn btn-primary">Add Player</button>
+      {
+       showBtn && <button onClick={() => handlePlayerSalary(player)} className="btn btn-primary">Add Player</button>
+      }
     </div>
         </>
     );
