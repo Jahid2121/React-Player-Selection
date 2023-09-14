@@ -1,11 +1,12 @@
 
 import PropTypes from 'prop-types';
 
-const Button = () => {
+const Button = ({handlePlayerSalary, player}) => {
+    const {salary} = player
     return (
         <>
             <div className="card-actions">
-      <button className="btn btn-primary">Add Player</button>
+      <button onClick={() => handlePlayerSalary(player)} className="btn btn-primary">Add Player</button>
     </div>
         </>
     );

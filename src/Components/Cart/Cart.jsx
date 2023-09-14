@@ -1,10 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import PlayerCart from '../PlayerInCart/PlayerCart';
 
-const Cart = props => {
+const Cart = ({selectedPlayers}) => {
+    console.log(selectedPlayers);
+    const {name} = selectedPlayers          
     return (
         <div>
-            <h3>This is Player Cart</h3>
+            <h2 className='text-2xl ml-4'>Selected players:  {selectedPlayers.length}</h2>
+        {
+            selectedPlayers.map(selectedPlayer =>
+              <PlayerCart selectedPlayer={selectedPlayer} /> )
+        }
         </div>
     );
 };
