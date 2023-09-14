@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-const Salary = () => {
+const Salary = ({salary}) => {
     return (
         <div>
-            <p>Salary: $6000</p>
+            <p>Salary: ${salary}</p>
         </div>
     );
 };

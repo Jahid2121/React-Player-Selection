@@ -1,11 +1,11 @@
 
 import PropTypes from 'prop-types';
 
-const Images = () => {
+const Images = ({player_image}) => {
     return (
         <>
           <figure className="px-10 pt-10">
-    <img src="https://i.ibb.co/L1b6xSq/shape.jpg" alt="Shoes" className="rounded-xl" />
+    <img src={player_image} alt="Shoes" className="rounded-full" />
   </figure>
         </>
     );
