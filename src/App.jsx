@@ -10,21 +10,22 @@ function App() {
   const [selectedPlayers, setSelectedPlayers] = useState([])
   const [totalremaining, setTotalRemaining] =  useState(2000000)
   const [totalCost, setTotalCost] = useState(0)
-  const [showBtn, setShowBtn] = useState(true)
+  const [showBtn, setShowBtn] = useState(false)
 
   useEffect(()=> {
+    
     fetch('players.json')
     .then(res => res.json())
     .then(data => setAllplayers(data))
   }, [])
 
     const handlePlayerSalary = playerData => {
-      const showBtn = playerdata 
       setShowBtn(!showBtn)
       const isExist = selectedPlayers.find(item => item.id === playerData.id)
       let count = playerData.salary
       if (isExist) {
         return alert(`You have already added ${playerData.name}`)
+        
       }      
       else{
         
@@ -56,7 +57,7 @@ function App() {
      <div className='flex'>
      <div  className='w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
       {
-        allplayers.map(player => <Card key={player.id} showBtn={showBtn}handlePlayerSalary={handlePlayerSalary}  player={player} />)
+        allplayers.map(player => <Card key={player.id}  showBtn={showBtn} handlePlayerSalary={handlePlayerSalary}   player={player} />)
       }
      
      </div>

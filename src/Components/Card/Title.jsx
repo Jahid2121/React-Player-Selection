@@ -1,9 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Salary from './Salary/Salary';
 
-const Title = ({player, handlePlayerSalary}) => {
+const Title = ({player, handlePlayerSalary, showBtn}) => {
     const {name, country, salary} = player
     return (
         <div>
@@ -11,7 +10,7 @@ const Title = ({player, handlePlayerSalary}) => {
     <h2 className="card-title">{name}</h2>
     <p>Country:{country} </p>
     <Salary salary={salary}/>
-    <Button player={player} handlePlayerSalary={handlePlayerSalary}/>
+    <Button showBtn={showBtn} player={player} handlePlayerSalary={handlePlayerSalary}/>
   </div>
         </div>
     );
